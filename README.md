@@ -36,3 +36,17 @@ port_randomizer.py -o 443 -i 10000:12000 --seed 1122334455 --schedule hourly
 ```
 
 both machines will communicate using a random port between 10000 and 12000 changing seamlessly every hour.
+
+
+## Docker
+you can run the proxy as docker containers:
+
+i.e. on server side
+```
+docker run -it --rm lerignoux/port-randomizer main.py -s 0.0.0.0:1443-2443 -d <my_service>:443 --seed 112233
+```
+
+i.e. on client side
+```
+docker run -it --rm lerignoux/port-randomizer main.py -d <my_host>:1443-2443 -i 0.0.0.0:443 --seed 112233
+```
